@@ -11,11 +11,11 @@ WebService::Saasu - an interface to saasu.com's RESTful accounting API using Web
 
 =head1 VERSION
 
-Version 0.01
+Version 0.1
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.1';
 
 has 'commands' => (
     is      => 'rw',
