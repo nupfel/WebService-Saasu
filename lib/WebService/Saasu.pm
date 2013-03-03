@@ -11,7 +11,7 @@ WebService::Saasu - an interface to saasu.com's RESTful accounting API using Web
 
 =head1 VERSION
 
-Version 0.1.1
+Version 0.1
 
 =cut
 
@@ -165,7 +165,7 @@ has 'commands' => (
             },
 
             # inventory items
-            list_item => { path => 'FullInventoryItemList' },
+            list_items => { path => 'FullInventoryItemList' },
             get_item  => {
                 path      => 'InventoryItem',
                 mandatory => ['id'],
