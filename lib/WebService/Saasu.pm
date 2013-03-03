@@ -11,7 +11,7 @@ WebService::Saasu - an interface to saasu.com's RESTful accounting API using Web
 
 =head1 VERSION
 
-Version 0.1.1
+Version 0.1.1.1
 
 =cut
 
