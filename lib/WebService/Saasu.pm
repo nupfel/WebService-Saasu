@@ -1,6 +1,6 @@
 package WebService::Saasu;
 
-use 5.10.0;
+use 5.010;
 use Mouse;
 
 # ABSTRACT: WebService::Saasu - an interface to saasu.com's RESTful accounting API using Web::API
