@@ -172,7 +172,7 @@ has 'commands' => (
 
             # inventory items
             list_items => { path => 'FullInventoryItemList' },
-            get_item  => {
+            get_item   => {
                 path      => 'InventoryItem',
                 mandatory => ['id'],
             },
@@ -299,13 +299,43 @@ has 'commands' => (
                 mandatory => ['id'],
             },
 
+            # activities
+            list_activities => { path => 'ActivityList' },
+            get_activity    => { path => 'Activity' },
+            create_activity => {
+                method  => 'POST',
+                path    => 'Tasks',
+                wrapper => [ 'tasks', 'insertActivity', 'activity' ],
+                mandatory => [ 'type', 'title', ],
+            },
+            update_activity => {
+                method    => 'POST',
+                path      => 'Tasks',
+                wrapper   => [ 'tasks', 'updateActivity', 'activity' ],
+                mandatory => [ 'id', 'lastUpdatedUid', 'type', 'title', ],
+            },
+            delete_activity => {
+                path      => 'Activity',
+                method    => 'DELETE',
+                mandatory => ['id'],
+            },
+
+            # reports
+            contact_statement_report => {
+                path      => 'contactstatementreport',
+                mandatory => [ 'contactuid', 'datefrom', 'dateto' ],
+            },
+
             # tax codes
             list_tax_codes => { path => 'TaxCodeList' },
 
             # tags
             list_tags => { path => 'TagList' },
 
-            list_deleted => { path => 'DeletedEntityList' }, };
+            # deleted entities
+            list_deleted => { path => 'DeletedEntityList' },
+
+        };
     },
 );
 
@@ -323,7 +353,7 @@ basic configuration for the client API happens usually in the BUILD method when 
 sub BUILD {
     my ($self) = @_;
 
-    $self->user_agent(__PACKAGE__ . ' ' . $VERSION);
+    $self->user_agent(__PACKAGE__ . ' ' . $WebService::Saasu::VERSION);
     $self->content_type('application/xml');
     $self->base_url('https://secure.saasu.com/webservices/rest/r1');
     $self->auth_type('get_params');
