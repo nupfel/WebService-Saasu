@@ -1,12 +1,14 @@
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 WebService::Saasu - WebService::Saasu - an interface to saasu.com's RESTful accounting API using Web::API
 
 =head1 VERSION
 
-version 0.4
+version 0.5
 
 =head1 SYNOPSIS
 
@@ -75,3 +77,4 @@ This is free software, licensed under:
 
   The (three-clause) BSD License
 
+=cut
