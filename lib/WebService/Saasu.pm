@@ -48,7 +48,7 @@ has 'commands' => (
                 method    => 'POST',
                 wrapper   => [ 'tasks', 'updateInvoice', 'invoice' ],
                 mandatory => [
-                    'uid',              'lastUpdatedUid',
+                    'uid',             'lastUpdatedUid',
                     'transactionType', 'date',
                     'layout',          'invoiceItems'
                 ],
@@ -82,7 +82,7 @@ has 'commands' => (
                 wrapper =>
                     [ 'tasks', 'updateInvoicePayment', 'invoicePayment' ],
                 mandatory => [
-                    'uid',              'lastUpdatedUid',
+                    'uid',             'lastUpdatedUid',
                     'transactionType', 'date',
                     'invoicePaymentItems'
                 ],
@@ -370,7 +370,9 @@ sub BUILD {
             KeyAttr    => ['layout'],
         ),
     );
+    $self->error_keys(['invoiceResponse.errors.error.message']);
     $self->retry_http_codes([500]);
+    $self->retry_errors([qr/The auto-generated invoice number \([^)]+\) has already been used/]);
 
     return $self;
 }
