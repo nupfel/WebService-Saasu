@@ -370,7 +370,7 @@ sub BUILD {
             KeyAttr    => ['layout'],
         ),
     );
-    $self->error_keys(['invoiceResponse.errors.error.message']);
+    $self->error_keys(['insertInvoiceResult.errors.error.message']);
     $self->retry_http_codes([500]);
     $self->retry_errors([qr/The auto-generated invoice number \([^)]+\) has already been used/]);
 
